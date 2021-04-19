@@ -8,14 +8,22 @@
 </head>
 <body>
     <h1>Rockets</h1>
-    <button type = "button" onclick="">Create rocket 1</button>
-    <button type = "button" onclick="">Create rocket 2</button>   
-    <button type = "button" onclick="">Accelerate rocket 1</button>   
-    <button type = "button" onclick="">Accelerate rocket 2</button>   
-    <button type = "button" onclick="">Brake rocket 1</button>   
-    <button type = "button" onclick="">Brake rocket 2</button>   
-    <div class="rocketsInfo">
+    <button type = "button" onclick="createRocket('ASD',firstRocketPropellers)">Create rocket 1</button>
+    <button type = "button" onclick="createRocket('ASDEG',secondRocketPropellers)">Create rocket 2</button>   
+    <button type = "button" onclick="rockets[0].accelerate()">Accelerate rocket 1</button>   
+    <button type = "button" onclick="rockets[1].accelerate()">Accelerate rocket 2</button>   
+    <button type = "button" onclick="rockets[0].brake()">Brake rocket 1</button>   
+    <button type = "button" onclick="rockets[1].brake()">Brake rocket 2</button> 
+    <button type = "button" onclick="showRocket(rockets[0])">Print rocket 1 info</button>   
+    <button type = "button" onclick="showRocket(rockets[1])">Print rocket 2 info</button>   
+    <button type = "button" onclick="">Print all rockets info</button>   
+  
+    <div id="rocketsInfo">
 
     </div>
+    <script src="../models/propeller.js"></script>
+    <script src="../models/rocket.js"></script>
+    <script src="../controllers/controller.js"></script>
+
 </body>
 </html>
