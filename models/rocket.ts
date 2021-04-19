@@ -2,7 +2,7 @@ class Rocket {
 
     private id:string
     private propellers:Propeller[] = []
-    private currentPotency: number
+    
 
     constructor(id:string,propellers:Propeller[]){
         this.id = id;
@@ -10,13 +10,21 @@ class Rocket {
     }
 
     getMaxPotency():number{
-        let maxValue:number;
+        let maxValue:number = 0;
         for (let propeller of this.propellers){
             maxValue += propeller.potency
         }
         return maxValue;
     }
 
+    getCurrentPotency():number{
+        let value:number = 0;
+        for (let propeller of this.propellers){
+            value += propeller.potency
+        }
+        return value;
+
+    }
     accelerate(){
         for (let propeller of this.propellers){
             propeller.accelerate();

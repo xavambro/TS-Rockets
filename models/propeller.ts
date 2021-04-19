@@ -1,10 +1,9 @@
 class Propeller {
     private maxPotency:number
-    private currentPotency:number
+    private currentPotency:number = 0;
 
     constructor(potency:number){
         this.maxPotency = potency;
-        this.currentPotency = 0;
     }
 
     get potency(){
@@ -15,6 +14,10 @@ class Propeller {
         return this.currentPotency
     }
 
+    set setCurrent(current:number){
+        this.currentPotency = current;
+
+    }
     accelerate(){
         if (this.currentPotency < this.maxPotency){
             this.currentPotency += 10;
