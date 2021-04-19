@@ -44,7 +44,7 @@ var Rocket = /** @class */ (function () {
     Rocket.prototype.brake = function () {
         for (var _i = 0, _a = this.propellers; _i < _a.length; _i++) {
             var propeller = _a[_i];
-            propeller.accelerate();
+            propeller.brake();
         }
     };
     return Rocket;

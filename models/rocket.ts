@@ -41,7 +41,7 @@ class Rocket {
 
     brake(){
         for (let propeller of this.propellers){
-            propeller.accelerate();
+            propeller.brake();
         }
     }
 }
