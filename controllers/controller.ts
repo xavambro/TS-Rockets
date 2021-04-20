@@ -27,20 +27,22 @@ function showRocket(rocket:Rocket):void{
         return
     }
     if(document.getElementById(`${rocket.getId}`) != null){
-        document.getElementById(`${rocket.getId}`)?.remove()
-        document.getElementById(`propellers-${rocket.getId}`)?.remove()
+        document.getElementById(`div-${rocket.getId}`)?.remove()
     }
-    
+    let divRocket = document.createElement("div");
+    divRocket.className = "rocketCard col-md-5 border border-dark rounded m-2";
+    divRocket.setAttribute('id',`div-${rocket.getId}`)
     let infoId = document.createElement("p");
+    infoId.className = "m-2"
+    infoId.style.whiteSpace = "pre";
     infoId.setAttribute('id',`${rocket.getId}`)
-    infoId.textContent = `Rocket id: ${rocket.getId}. Rocket Max Potency: ${rocket.getMaxPotency()}. Rocket Current Potency: ${rocket.getCurrentPotency()}`;   
-    let infoPropeller = document.createElement("p");
-    infoPropeller.setAttribute('id',`propellers-${rocket.getId}`)
-    infoPropeller.textContent = `Rocket propellers:`;
+    infoId.textContent = `Rocket id: ${rocket.getId}.\r\nRocket Max Potency: ${rocket.getMaxPotency()}.\r\nRocket Current Potency: ${rocket.getCurrentPotency()}`;   
+    infoId.textContent += `\r\nRocket propellers:`;
 
     for (let prop of rocket.getPropellers){
-        infoPropeller.textContent += `${prop.potency}.`
+        infoId.textContent += `${prop.potency}.`
     }
-    document.getElementById("rocketsInfo")?.append(infoId,infoPropeller)
+    divRocket.append(infoId);
+    document.getElementById("rocketsInfo")?.append(divRocket)
 
 }

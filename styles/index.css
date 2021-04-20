@@ -1,6 +1,15 @@
+.container{
+    font-family: 'Zen Dots'
+}
+.rocketCard{
+    background-color:lightgrey;
+}
 .space {
     width:500px;
     height:500px;
     background-color: aquamarine;
-    
 }
+
+/* p {
+    white-space: pre;
+} */

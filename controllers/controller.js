@@ -19,24 +19,27 @@ function rocketExist(rocketId) {
     return false;
 }
 function showRocket(rocket) {
-    var _a, _b, _c;
+    var _a, _b;
     if (rocket == null) {
         console.log("Primero has de crear los cohetes que quieras mostrar");
         return;
     }
     if (document.getElementById("" + rocket.getId) != null) {
-        (_a = document.getElementById("" + rocket.getId)) === null || _a === void 0 ? void 0 : _a.remove();
-        (_b = document.getElementById("propellers-" + rocket.getId)) === null || _b === void 0 ? void 0 : _b.remove();
+        (_a = document.getElementById("div-" + rocket.getId)) === null || _a === void 0 ? void 0 : _a.remove();
     }
+    var divRocket = document.createElement("div");
+    divRocket.className = "rocketCard col-md-5 border border-dark rounded m-2";
+    divRocket.setAttribute('id', "div-" + rocket.getId);
     var infoId = document.createElement("p");
+    infoId.className = "m-2";
+    infoId.style.whiteSpace = "pre";
     infoId.setAttribute('id', "" + rocket.getId);
-    infoId.textContent = "Rocket id: " + rocket.getId + ". Rocket Max Potency: " + rocket.getMaxPotency() + ". Rocket Current Potency: " + rocket.getCurrentPotency();
-    var infoPropeller = document.createElement("p");
-    infoPropeller.setAttribute('id', "propellers-" + rocket.getId);
-    infoPropeller.textContent = "Rocket propellers:";
-    for (var _i = 0, _d = rocket.getPropellers; _i < _d.length; _i++) {
-        var prop = _d[_i];
-        infoPropeller.textContent += prop.potency + ".";
+    infoId.textContent = "Rocket id: " + rocket.getId + ".\r\nRocket Max Potency: " + rocket.getMaxPotency() + ".\r\nRocket Current Potency: " + rocket.getCurrentPotency();
+    infoId.textContent += "\r\nRocket propellers:";
+    for (var _i = 0, _c = rocket.getPropellers; _i < _c.length; _i++) {
+        var prop = _c[_i];
+        infoId.textContent += prop.potency + ".";
     }
-    (_c = document.getElementById("rocketsInfo")) === null || _c === void 0 ? void 0 : _c.append(infoId, infoPropeller);
+    divRocket.append(infoId);
+    (_b = document.getElementById("rocketsInfo")) === null || _b === void 0 ? void 0 : _b.append(divRocket);
 }

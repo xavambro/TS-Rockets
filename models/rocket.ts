@@ -34,14 +34,23 @@ class Rocket {
 
     }
     accelerate(){
-        for (let propeller of this.propellers){
-            propeller.accelerate();
+        if(this.propellers != null){
+            for (let propeller of this.propellers){
+                propeller.accelerate();
+            }
+        }else{
+            console.log("Tienes que crear un cohete primero.")
         }
+        
     }
 
     brake(){
-        for (let propeller of this.propellers){
-            propeller.brake();
+        if(this.propellers != null){
+            for (let propeller of this.propellers){
+                propeller.brake();
+            }
+        }else{
+            console.log("Tienes que crear un cohete primero.")
         }
     }
 }

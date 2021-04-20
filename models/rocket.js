@@ -36,15 +36,25 @@ var Rocket = /** @class */ (function () {
         return value;
     };
     Rocket.prototype.accelerate = function () {
-        for (var _i = 0, _a = this.propellers; _i < _a.length; _i++) {
-            var propeller = _a[_i];
-            propeller.accelerate();
+        if (this.propellers != null) {
+            for (var _i = 0, _a = this.propellers; _i < _a.length; _i++) {
+                var propeller = _a[_i];
+                propeller.accelerate();
+            }
+        }
+        else {
+            console.log("Tienes que crear un cohete primero.");
         }
     };
     Rocket.prototype.brake = function () {
-        for (var _i = 0, _a = this.propellers; _i < _a.length; _i++) {
-            var propeller = _a[_i];
-            propeller.brake();
+        if (this.propellers != null) {
+            for (var _i = 0, _a = this.propellers; _i < _a.length; _i++) {
+                var propeller = _a[_i];
+                propeller.brake();
+            }
+        }
+        else {
+            console.log("Tienes que crear un cohete primero.");
         }
     };
     return Rocket;
