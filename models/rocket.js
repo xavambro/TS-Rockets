@@ -57,9 +57,6 @@ var Rocket = /** @class */ (function () {
                 var propeller = _a[_i];
                 propeller.accelerate();
             }
-            /* if(!this.maxPotencyReached()){
-                this.animationDuration--;
-            } */
             this.animationDuration = this.defaultAnimationDuration - this.getCurrentPotency() * 0.02;
         }
         else {
@@ -72,9 +69,6 @@ var Rocket = /** @class */ (function () {
                 var propeller = _a[_i];
                 propeller.brake();
             }
-            /* if(this.getCurrentPotency() > 0){
-                this.animationDuration++;
-            } */
             this.animationDuration = this.defaultAnimationDuration - this.getCurrentPotency() * 0.02;
         }
         else {

@@ -31,7 +31,7 @@ function showRocketInfo(rocket) {
         (_a = document.getElementById("div-" + rocket.getId)) === null || _a === void 0 ? void 0 : _a.remove();
     }
     var divRocket = document.createElement("div");
-    divRocket.className = "rocketCard col-md-5 border border-dark rounded m-2";
+    divRocket.className = "rocketCard col border border-dark rounded m-2";
     divRocket.setAttribute('id', "div-" + rocket.getId);
     var infoId = document.createElement("p");
     infoId.className = "m-2";
@@ -62,7 +62,11 @@ function showRocket(num) {
         rckt.className = "rocket" + num;
     }
 }
-function rocketSpeed(rocket, num, action) {
+function changeRocketSpeed(rocket, num, action) {
+    if (rocket == null) {
+        console.log("Primero has de crear el cohete.");
+        return;
+    }
     var rocketElement = document.getElementById("rocket" + num);
     if (action == '+' && rocket.getCurrentPotency() < rocket.getMaxPotency()) {
         rocket.accelerate();

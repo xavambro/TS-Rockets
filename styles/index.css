@@ -20,9 +20,7 @@
     bottom:5px;
     left:33%;
     animation: rocketIgnition 8s ease-in forwards, bounce 8s;
-    /* transition-property: bottom;
-    transition-duration: 8s;
-    transition-timing-function: ease-in; */
+    
 }
 
 .rocket2 {
@@ -31,20 +29,8 @@
     position:absolute;
     bottom: 5px;
     left:66%;
-    animation: rocketIgnition 8s ease-in forwards, bounce2 8s;
-    /* animation-duration: 8s;
-    animation-timing-function: ease-in;
-    animation-fill-mode: forwards;
-
-    animation-name: bounce;
-    animation-duration: 1s; */
-    
+    animation: rocketIgnition 8s ease-in forwards, bounce2 8s;   
 }
-
-/* .rocket1:hover {
-    bottom : 100%
-} */
-
 
 @keyframes rocketIgnition {
     from {bottom: 5px;}

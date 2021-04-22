@@ -35,7 +35,7 @@ function showRocketInfo(rocket:Rocket):void{
     }
 
     let divRocket = document.createElement("div");
-    divRocket.className = "rocketCard col-md-5 border border-dark rounded m-2";
+    divRocket.className = "rocketCard col border border-dark rounded m-2";
     divRocket.setAttribute('id',`div-${rocket.getId}`)
     let infoId = document.createElement("p");
     infoId.className = "m-2"
@@ -52,7 +52,7 @@ function showRocketInfo(rocket:Rocket):void{
 
 }
 
-function showSpace(){
+function showSpace():void{
     const space = document.getElementById("space");
     //toggle de la imagen
     if(space != null && space.className == "space d-none mb-3"){
@@ -63,14 +63,20 @@ function showSpace(){
 
 }
 
-function showRocket(num:number){
+function showRocket(num:number):void{
     let rckt = document.getElementById(`rocket${num}`);
     if(rckt != null && rckt.className == `rocket${num} d-none`){
         rckt.className = `rocket${num}`     
     }
 }
 
-function rocketSpeed(rocket:Rocket,num:number,action:string){
+function changeRocketSpeed(rocket:Rocket,num:number,action:string):void{
+
+    if(rocket == null){
+        console.log("Primero has de crear el cohete.");
+        return;
+    }
+
     let rocketElement = document.getElementById(`rocket${num}`);
     if(action == '+' && rocket.getCurrentPotency() < rocket.getMaxPotency()){
         rocket.accelerate();

@@ -47,9 +47,6 @@ class Rocket {
             for (let propeller of this.propellers){
                 propeller.accelerate();
             }
-            /* if(!this.maxPotencyReached()){
-                this.animationDuration--;
-            } */
             this.animationDuration = this.defaultAnimationDuration - this.getCurrentPotency()*0.02;
         }else{
             console.log("Tienes que crear un cohete primero.")
@@ -62,9 +59,7 @@ class Rocket {
             for (let propeller of this.propellers){
                 propeller.brake();
             }
-            /* if(this.getCurrentPotency() > 0){
-                this.animationDuration++;
-            } */
+            
             this.animationDuration = this.defaultAnimationDuration - this.getCurrentPotency()*0.02;
         }else{
             console.log("Tienes que crear un cohete primero.")
