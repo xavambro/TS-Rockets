@@ -2,10 +2,12 @@
 var firstRocketPropellers = [new Propeller(10), new Propeller(30), new Propeller(80)];
 var secondRocketPropellers = [new Propeller(30), new Propeller(40), new Propeller(50), new Propeller(50), new Propeller(30), new Propeller(10)];
 var rockets = [];
-function createRocket(id, propellers) {
+var defaultTransitionDuration = '8s';
+function createRocket(id, propellers, num) {
     if (!rocketExist(id)) {
         var rocket = new Rocket(id, propellers);
         rockets.push(rocket);
+        showRocket(num);
     }
 }
 function rocketExist(rocketId) {
@@ -18,12 +20,13 @@ function rocketExist(rocketId) {
     }
     return false;
 }
-function showRocket(rocket) {
+function showRocketInfo(rocket) {
     var _a, _b;
     if (rocket == null) {
         console.log("Primero has de crear los cohetes que quieras mostrar");
         return;
     }
+    //Si ya hemos mostrado la info del cohete anteriormente eliminamos el div que lo contiene para volver a mostrar la info actualizada
     if (document.getElementById("" + rocket.getId) != null) {
         (_a = document.getElementById("div-" + rocket.getId)) === null || _a === void 0 ? void 0 : _a.remove();
     }
@@ -34,7 +37,7 @@ function showRocket(rocket) {
     infoId.className = "m-2";
     infoId.style.whiteSpace = "pre";
     infoId.setAttribute('id', "" + rocket.getId);
-    infoId.textContent = "Rocket id: " + rocket.getId + ".\r\nRocket Max Potency: " + rocket.getMaxPotency() + ".\r\nRocket Current Potency: " + rocket.getCurrentPotency();
+    infoId.textContent = "Rocket id: " + rocket.getId + ".\r\nRocket Max Potency: " + rocket.getMaxPotency() + ".\r\nRocket Current Potency: " + rocket.getCurrentPotency() + ".\r\nExpected Animation Duration: " + rocket.getSpeed + ".";
     infoId.textContent += "\r\nRocket propellers:";
     for (var _i = 0, _c = rocket.getPropellers; _i < _c.length; _i++) {
         var prop = _c[_i];
@@ -42,4 +45,35 @@ function showRocket(rocket) {
     }
     divRocket.append(infoId);
     (_b = document.getElementById("rocketsInfo")) === null || _b === void 0 ? void 0 : _b.append(divRocket);
+}
+function showSpace() {
+    var space = document.getElementById("space");
+    //toggle de la imagen
+    if (space != null && space.className == "space d-none mb-3") {
+        space.className = "space mb-3";
+    }
+    else if (space != null) {
+        space.className = "space d-none mb-3";
+    }
+}
+function showRocket(num) {
+    var rckt = document.getElementById("rocket" + num);
+    if (rckt != null && rckt.className == "rocket" + num + " d-none") {
+        rckt.className = "rocket" + num;
+    }
+}
+function rocketSpeed(rocket, num, action) {
+    var rocketElement = document.getElementById("rocket" + num);
+    if (action == '+' && rocket.getCurrentPotency() < rocket.getMaxPotency()) {
+        rocket.accelerate();
+        if (rocketElement != null) {
+            rocketElement.style.animationDuration = rocket.getSpeed + "s";
+        }
+    }
+    else if (action == '-' && rocket.getCurrentPotency() > 0) {
+        rocket.brake();
+        if (rocketElement != null) {
+            rocketElement.style.animationDuration = rocket.getSpeed + "s";
+        }
+    }
 }

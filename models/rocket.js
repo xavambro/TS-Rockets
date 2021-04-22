@@ -2,6 +2,8 @@
 var Rocket = /** @class */ (function () {
     function Rocket(id, propellers) {
         this.propellers = [];
+        this.defaultAnimationDuration = 8;
+        this.animationDuration = 8;
         this.id = id;
         this.propellers = propellers;
     }
@@ -15,6 +17,20 @@ var Rocket = /** @class */ (function () {
     Object.defineProperty(Rocket.prototype, "getPropellers", {
         get: function () {
             return this.propellers;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Rocket.prototype, "getSpeed", {
+        get: function () {
+            return this.animationDuration;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Rocket.prototype, "getDefaultSpeed", {
+        get: function () {
+            return this.defaultAnimationDuration;
         },
         enumerable: false,
         configurable: true
@@ -41,6 +57,10 @@ var Rocket = /** @class */ (function () {
                 var propeller = _a[_i];
                 propeller.accelerate();
             }
+            /* if(!this.maxPotencyReached()){
+                this.animationDuration--;
+            } */
+            this.animationDuration = this.defaultAnimationDuration - this.getCurrentPotency() * 0.02;
         }
         else {
             console.log("Tienes que crear un cohete primero.");
@@ -52,9 +72,21 @@ var Rocket = /** @class */ (function () {
                 var propeller = _a[_i];
                 propeller.brake();
             }
+            /* if(this.getCurrentPotency() > 0){
+                this.animationDuration++;
+            } */
+            this.animationDuration = this.defaultAnimationDuration - this.getCurrentPotency() * 0.02;
         }
         else {
             console.log("Tienes que crear un cohete primero.");
+        }
+    };
+    Rocket.prototype.maxPotencyReached = function () {
+        if (this.getMaxPotency() > this.getCurrentPotency()) {
+            return false;
+        }
+        else {
+            return true;
         }
     };
     return Rocket;
